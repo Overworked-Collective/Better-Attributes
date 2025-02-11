@@ -7,7 +7,6 @@
   "unityRelease": "47f1",
   "dependencies": {
     "com.bouncypantaloons.editor-tooling": "0.1.0",
-    "com.bouncypantaloons.extension-functions": "0.1.0"
  },
  "keywords": [
     "insptecor",
