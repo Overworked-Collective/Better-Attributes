@@ -22,6 +22,7 @@ namespace BetterAttributes
                 _animatedMat = new Material(Shader.Find("Hidden/RectToggle"));
                 _animatedMat.SetFloat("_AnimationPercentage", property.boolValue.ToInt());
                 _activeColor = _animatedMat.GetColor("_ActiveColor");
+                _animatedMat.SetInt("_UsingLinearColorSpace", (PlayerSettings.colorSpace == ColorSpace.Linear).ToInt());
             }
             _animatedMat.SetFloat("_Width", position.width);
             _animatedMat.SetFloat("_Height", position.height);

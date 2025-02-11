@@ -10,6 +10,7 @@ Shader "Hidden/RectToggle"
         _AnimationPercentage("_AnimationPercentage", float) = 0
         _Width("_Width", float) = 100
         _Height("_Height", float) = 100
+        _UsingLinearColorSpace("Using Linear Color Space", int) = 0
     }
     SubShader
     {
@@ -47,6 +48,7 @@ Shader "Hidden/RectToggle"
             float _Width;
             float _Height;
 
+
             v2f vert (appdata v)
             {
                 v2f o;
@@ -65,6 +67,17 @@ Shader "Hidden/RectToggle"
             }
             //#include "Assets/SDF/SignedDistanceFields2D.hlsl"
 
+            int _UsingLinearColorSpace;
+            fixed4 GetColorInColorSpace(fixed4 color) 
+            {
+                if (_UsingLinearColorSpace == 1) 
+                {
+                    //color = fixed4(255*pow(color.r/255,2.2), 255*pow(color.g/255,2.2), 255*pow(color.b/255,2.2), 255*pow(color.a/255,2.2));
+                    color = fixed4(pow(color.r,0.4545), pow(color.g,0.4545), pow(color.b,0.4545), pow(color.a,0.4545));
+                }
+                return color;
+            }
+
             fixed4 frag(v2f i) : SV_Target
             {
                 float2 size = float2(_Width,_Height);
@@ -79,7 +92,7 @@ Shader "Hidden/RectToggle"
 
                 float alpha = 1-bgMask;
 
-                fixed4 col = lerp(_InactiveColor, _BorderColor, borderMask);
+                fixed4 col = lerp(GetColorInColorSpace(_InactiveColor), GetColorInColorSpace(_BorderColor), borderMask);
                 col.a = alpha;
 
                 // Animated Box
@@ -89,7 +102,7 @@ Shader "Hidden/RectToggle"
 
                 float boxMask = 1 - step(_Roundness - _BorderWidth, boxSDF);
 
-                col = lerp(col, _ActiveColor, boxMask);
+                col = lerp(col, GetColorInColorSpace(_ActiveColor), boxMask);
 
                 return col;
             }
