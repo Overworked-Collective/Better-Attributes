@@ -19,7 +19,7 @@ namespace BetterAttributes
 
             if (_animatedMat == null) 
             { 
-                _animatedMat = new Material(Shader.Find("Hidden/S-RectToggle"));
+                _animatedMat = new Material(Shader.Find("Hidden/RectToggle"));
                 _animatedMat.SetFloat("_AnimationPercentage", property.boolValue.ToInt());
                 _activeColor = _animatedMat.GetColor("_ActiveColor");
             }

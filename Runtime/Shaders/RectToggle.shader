@@ -1,4 +1,4 @@
-Shader "Hidden/S-RectToggle"
+Shader "Hidden/RectToggle"
 {
     Properties
     {
