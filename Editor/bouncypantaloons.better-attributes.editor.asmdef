@@ -1,0 +1,19 @@
+{
+    "name": "bouncypantaloons.better-attributes.Editor",
+    "rootNamespace": "BetterAttributes",
+    "references": [
+        "bouncypantaloons.better-attributes",
+        "bouncypantaloons.extension-functions",
+        "bouncypantaloons.editor-tooling.editor",
+        "bouncypantaloons.editor-tooling"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

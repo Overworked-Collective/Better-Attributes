@@ -1,0 +1,19 @@
+{
+  "name": "com.bouncypantaloons.better-attributes",
+  "version": "0.1.0",
+  "displayName": "Better Attributes",
+  "description": "This package adds some much needed and some quality of life attributes for the inspector.",
+  "unity": "2022.3",
+  "unityRelease": "47f1",
+  "dependencies": {
+    "com.bouncypantaloons.editor-tooling": "0.1.0",
+    "com.bouncypantaloons.extension-functions": "0.1.0"
+ },
+ "keywords": [
+    "insptecor",
+    "attributes"
+  ],
+  "author": {
+    "name": "BouncyPantaloons"
+  }
+}
