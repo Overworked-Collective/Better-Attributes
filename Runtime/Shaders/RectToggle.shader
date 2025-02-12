@@ -5,8 +5,8 @@ Shader "Hidden/RectToggle"
         _ActiveColor("Active Color", Color) = (0.317647,0.317647,0.317647,1)
         _InactiveColor("Inactive Color", Color) = (0.1568627,0.1568627,0.1568627,1)
         _BorderColor("Border Color", Color) = (0.1411764,0.1411764,0.1411764,1)
-        _Roundness("Roundness", float) = 11
-        _BorderWidth("Border Width", float) = 2
+        _Roundness("Roundness", float) = 4
+        _BorderWidth("Border Width", float) = 1
         _AnimationPercentage("_AnimationPercentage", float) = 0
         _Width("_Width", float) = 100
         _Height("_Height", float) = 100
