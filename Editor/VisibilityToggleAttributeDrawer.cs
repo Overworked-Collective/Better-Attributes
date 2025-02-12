@@ -1,3 +1,4 @@
+using Tooling.Extensions;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -9,7 +10,10 @@ public class VisibilityToggleAttributeDrawer : PropertyDrawer
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         VisibilityToggleAttribute toggleAttribute = (VisibilityToggleAttribute)attribute;
-        SerializedProperty variable = property.serializedObject.FindProperty(toggleAttribute.Variable);
+
+        string variablePath = property.GetContainerPath();
+        variablePath = variablePath.Equals("") ? toggleAttribute.Variable : variablePath + "." + toggleAttribute.Variable;
+        SerializedProperty variable = property.serializedObject.FindProperty(variablePath);
 
         Rect propertyRect = new Rect(position.x, position.y, position.width, EditorGUI.GetPropertyHeight(property));
 
@@ -34,7 +38,10 @@ public class VisibilityToggleAttributeDrawer : PropertyDrawer
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         VisibilityToggleAttribute toggleAttribute = (VisibilityToggleAttribute)attribute;
-        SerializedProperty variable = property.serializedObject.FindProperty(toggleAttribute.Variable);
+
+        string variablePath = property.GetContainerPath();
+        variablePath = variablePath.Equals("") ? toggleAttribute.Variable : variablePath + "." + toggleAttribute.Variable;
+        SerializedProperty variable = property.serializedObject.FindProperty(variablePath);
 
         if (variable != null && variable.GetUnderlyingType().Equals(toggleAttribute.Value.GetType()))
         {
