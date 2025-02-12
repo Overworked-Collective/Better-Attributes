@@ -4,7 +4,8 @@
     "references": [
         "bouncypantaloons.better-attributes",
         "bouncypantaloons.editor-tooling.editor",
-        "bouncypantaloons.editor-tooling"
+        "bouncypantaloons.editor-tooling",
+        "Unity.VisualScripting.Core.Editor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -6,7 +6,8 @@
   "unity": "2022.3",
   "unityRelease": "47f1",
   "dependencies": {
-    "com.bouncypantaloons.editor-tooling": "1.0.0"
+    "com.bouncypantaloons.editor-tooling": "1.0.0",
+    "com.unity.visualscripting": "1.0.0"
   },
   "keywords": [
     "insptecor",
