@@ -35,7 +35,15 @@ namespace BetterAttributes
             if (GUILayout.Button(attribute.ButtonText.Equals("") ? method.Name : attribute.ButtonText))
             {
                 object[] defaultParams = method.GetParameters().Select(p => p.DefaultValue).ToArray();
-                method.Invoke(target, defaultParams);
+                
+                if (method.ReturnType == typeof(IEnumerator))
+                {
+                    (target as MonoBehaviour).StartCoroutine(method.Name, defaultParams);
+                }
+                else
+                {
+                    method.Invoke(target, defaultParams);
+                }
             }
 
             EditorGUI.EndDisabledGroup();
