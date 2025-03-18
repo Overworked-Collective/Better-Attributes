@@ -11,6 +11,7 @@ namespace BetterAttributes
 
         public CircleHandleAttribute()
         {
+            order = -5;
         }
     }
 }

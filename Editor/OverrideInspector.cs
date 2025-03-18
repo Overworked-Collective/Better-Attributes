@@ -28,20 +28,20 @@ public class OverrideInspector : Editor
                     Debug.Log(item.Name);
                 }*/
 
-       /* using (var iterator = serializedObject.GetIterator())
+/*        using (var iterator = serializedObject.GetIterator())
         {
             if (iterator.NextVisible(true))
             {
                 do
                 {
-                    *//*if (iterator.isArray)
+                    if (iterator.isArray)
                     {
                         for (int i = 0; i < iterator.arraySize; i++)
                         {
                             ShowPropertyField(iterator.GetArrayElementAtIndex(i));
                         }
                         continue;
-                    }*//*
+                    }
 
                     //Debug.Log(iterator.name + "  " + _serializedFields.First().Name);
                     //Debug.Log(iterator.name.Equals(_serializedFields.First().Name));
@@ -51,7 +51,9 @@ public class OverrideInspector : Editor
                 }
                 while (iterator.NextVisible(false));
             }
-        }*/
+        }
+
+        serializedObject.ApplyModifiedProperties();*/
 
         //var iterator = serializedObject.GetIterator();
 
@@ -67,7 +69,7 @@ public class OverrideInspector : Editor
         VisibilityToggleAttribute atribute = info.GetAttribute<VisibilityToggleAttribute>();
         if (atribute != null)
         {
-            if (VisibilityToggleAttributeDrawer.IsVisible(serializedObject.FindProperty(iterator.name), atribute))
+            if (!VisibilityToggleAttributeDrawer.IsVisible(serializedObject.FindProperty(iterator.name), atribute))
             {
                 return;
             }
