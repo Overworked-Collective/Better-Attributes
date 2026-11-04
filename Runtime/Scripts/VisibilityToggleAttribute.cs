@@ -9,6 +9,12 @@ public class VisibilityToggleAttribute : PropertyAttribute
 {
     public string Variable;
     public object Value;
+    public ValueCondition ValueCondition = ValueCondition.None;
+
+    public VisibilityToggleAttribute(string variable, ValueCondition valueCondition) : this(variable, null)
+    {
+        ValueCondition = valueCondition;
+    }
 
     public VisibilityToggleAttribute(string variable, object value)
     {
@@ -17,3 +23,12 @@ public class VisibilityToggleAttribute : PropertyAttribute
         Value = value;
     }
 }
+
+public enum ValueCondition
+{
+    None,
+    IsNull,
+    IsDefault,
+    IsNotDefault,
+    IsNotNull,
+} 
