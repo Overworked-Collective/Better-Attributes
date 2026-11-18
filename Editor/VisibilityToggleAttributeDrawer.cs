@@ -1,5 +1,4 @@
 using System.Reflection;
-using System.Runtime.Remoting.Activation;
 using Tooling.Extensions;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -14,14 +13,14 @@ public class VisibilityToggleAttributeDrawer : PropertyDrawer
         if (IsVisibleAll(property, fieldInfo, attribute as VisibilityToggleAttribute))
         {
             //if has text area attribute change the way the feild render is handled
-/*            if (property.isArray)
-            {
-                *//*base.OnGUI(position, property, label);
-                GUIContent emptyContent = label;
-                emptyContent.text = "";
-                EditorGUI.PropertyField(position, property, emptyContent, true);*//*
-                return;
-            }*/
+            /*            if (property.isArray)
+                        {
+                            *//*base.OnGUI(position, property, label);
+                            GUIContent emptyContent = label;
+                            emptyContent.text = "";
+                            EditorGUI.PropertyField(position, property, emptyContent, true);*//*
+                            return;
+                        }*/
 
             //if has text area attribute change the way the feild render is handled
             if (fieldInfo.GetCustomAttribute<TextAreaAttribute>() != null)
@@ -35,7 +34,7 @@ public class VisibilityToggleAttributeDrawer : PropertyDrawer
 
             //defualt field
             EditorGUI.PropertyField(position, property, label, true);
-        } 
+        }
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -86,10 +85,6 @@ public class VisibilityToggleAttributeDrawer : PropertyDrawer
                 return variable.boxedValue == default;
             case ValueCondition.IsNotDefault:
                 return variable.boxedValue != default;
-            
-            case ValueCondition.None:
-            default:
-                break;
         }
 
         // if both variable and value are null => return true
@@ -101,16 +96,9 @@ public class VisibilityToggleAttributeDrawer : PropertyDrawer
         // we know both are not null so now do type equivelance and value equivelance check
         if (variable.GetUnderlyingType().Equals(attribute.Value.GetType()))
         {
-            if (variable.GetUnderlyingValue().Equals(attribute.Value))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            bool isEqual = variable.GetUnderlyingValue().Equals(attribute.Value);
+            return (isEqual ? attribute.ValueCondition == ValueCondition.IsGivenValue : attribute.ValueCondition == ValueCondition.IsNotGivenValue);
         }
-
         return true;
     }
 }
