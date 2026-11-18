@@ -1,6 +1,6 @@
 {
   "name": "com.bouncypantaloons.better-attributes",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "displayName": "Better Attributes",
   "description": "This package adds some much needed and some quality of life attributes for the inspector.",
   "unity": "2022.3",
